@@ -131,7 +131,7 @@ celerybeat.pid
 .env
 .venv
 venv/
-ENV/
+# ENV/
 env.bak/
 venv.bak/
 
@@ -171,3 +171,30 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+# Terraform ignore files 
+
+*.tfstate
+*.tfstate.backup
+*.tfvars
+crash.log
+.terraform/
+.terraform/*
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+
+# Local environment overrides (optional)
+.env
+.env.*
+
+# Ignore all terraform provider binaries and plugin cache
+*.exe
+*.zip
+*.tar.gz
+*.bin
+
+terraform/env/dev/.terraform/providers/registry.terraform.io/hashicorp/google/6.28.0/windows_amd64/terraform-provider-google_v6.28.0_x5.exe
+.terraform/*
+terraform/env/dev/terraform.tfstate
