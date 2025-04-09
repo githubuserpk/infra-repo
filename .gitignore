@@ -198,9 +198,11 @@ terraform.tfstate.backup
 terraform/env/dev/.terraform/providers/registry.terraform.io/hashicorp/google/6.28.0/windows_amd64/terraform-provider-google_v6.28.0_x5.exe
 .terraform/*
 terraform/env/dev/terraform.tfstate
+terraform/env/dev/terraform.tfstate.*
 
 ENV/dev/.terraform/*
 env/dev/.terraform/*
 
 auth/
-env/
+./terraform/env/dev/terraform.tfstate.*
+./terraform/env/prd/terraform.tfstate.*
