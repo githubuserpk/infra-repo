@@ -201,3 +201,6 @@ terraform/env/dev/terraform.tfstate
 
 ENV/dev/.terraform/*
 env/dev/.terraform/*
+
+auth/
+env/

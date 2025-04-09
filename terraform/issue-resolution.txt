@@ -1,0 +1,32 @@
+
+Issue-1: 
+
+Summary: I ran terraform apply to create a project aishift-prd.  It created the project but could not link 
+billing account to it because quota has expired.
+
+Solution: 
+1. I disabled the billing for another project merge-with-ai and tried to run terraform apply
+Now, it said that it is tainted and needs to be destroyed and replaced as shown below: 
+
+google_project.create_gcp_project: Refreshing state... [id=projects/aishift-prd]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following    
+symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # google_project.create_gcp_project is tainted, so must be replaced
+
+2. Now, I untainted it to tell terraform that it is ok, it is already there, leave it. 
+
+C:\pk\infra-repo\terraform\env\prd>terraform untaint google_project.create_gcp_project
+Resource instance google_project.create_gcp_project has been successfully untainted.
+
+3. After untaint, i ran apply again and now it worked successfully
+output: 
+google_project.create_gcp_project: Modifying... [id=projects/aishift-prd]
+google_project.create_gcp_project: Modifications complete after 3s [id=projects/aishift-prd]
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+
