@@ -1,3 +1,4 @@
 provider "google" {
-    region  = "us-south1"
+  credentials = file("../../../auth/terraform-dev-key.json")
+  region      = "us-south1"  # or your desired region  
 }

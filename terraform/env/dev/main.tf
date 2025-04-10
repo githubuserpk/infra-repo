@@ -11,12 +11,16 @@ resource local_file sample_res {
   content  = "sample content" 
 }
 
-# module "org_iam" {
-#   source     = "./modules/org_iam"
-#   project_id = var.project_id
-#   infra_roles = var.infra_roles
-# }
+#Enable apis 
+resource "google_project_service" "enable_apis" {
+  for_each = toset(var.apis)
 
-# module "logging" {
-#   source     = "./modules/logging"
-# }
+  project = var.project_id
+  service = each.key
+}
+
+
+module "networking" {
+  source     = "../../modules/networking"
+  project_id = var.project_id
+}

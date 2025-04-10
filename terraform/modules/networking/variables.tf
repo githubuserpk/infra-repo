@@ -1,21 +1,7 @@
-# variables.tf
-
 variable "project_id" {
+  description = "The project ID"
   type        = string
-  description = "The unique ID of the Google Cloud Project to create"
 }
-
-variable "billing_account_id" {
-  type        = string
-  description = "The Billing account id"
-}
-
-
-variable "org_id" {
-  type        = string
-  description = "The Org id"
-}
-
 
 variable "apis" {
   description = "List of APIs to enable in the project"
@@ -31,6 +17,3 @@ variable "apis" {
     # Add more APIs here as needed
   ]
 }
-
-
-

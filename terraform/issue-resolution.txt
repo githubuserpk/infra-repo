@@ -30,3 +30,7 @@ google_project.create_gcp_project: Modifications complete after 3s [id=projects/
 
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 
+
+02. Issue 02: Application default credentials, ADC location 
+
+C:\Users\Pradeep\AppData\Roaming\gcloud\application_default_credentials.json
