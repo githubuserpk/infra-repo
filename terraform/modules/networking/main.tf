@@ -1,13 +1,3 @@
-
-#Enable apis 
-resource "google_project_service" "enable_apis" {
-  for_each = toset(var.apis)
-
-  project = var.project_id
-  service = each.key
-}
-
-
 # Create privatenet network
 resource "google_compute_network" "privatenet" {
   name                    = "privatenet"
@@ -23,6 +13,7 @@ resource "google_compute_subnetwork" "privatesubnet-us" {
   ip_cidr_range = "172.24.0.0/24"
   project       = var.project_id  # Pass the project_id here
 }
+
 
 
 

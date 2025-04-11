@@ -34,3 +34,16 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 02. Issue 02: Application default credentials, ADC location 
 
 C:\Users\Pradeep\AppData\Roaming\gcloud\application_default_credentials.json
+
+03. Issue 03: Terraform kept on returning Resource manager not enabled and compute engine not enabled errors 
+
+Error 1
+│ Error: Error when reading or editing ComputeNetwork "projects/aishift-prd/global/networks/privatenet": googleapi: Error 403: Compute Engine API has not been used in project aishift-prd before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=aishift-prd then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+│ Details:
+
+Error 2
+Error: Error when reading or editing Project Service aishift-dev-01/storage.googleapis.com: googleapi: Error 403: Cloud Resource Manager API has not been used in project 169843322607 before or it is disabled.
+
+
+Solution: 
+  I enabled these 2 apis manually from the console.  Need to find a permanant solution 
