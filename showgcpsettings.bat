@@ -9,3 +9,4 @@ gcloud config list --all --format="flattened"
 
 echo "run gcloud auth application-default login to login and update the GAC" 
 
+gcloud config configurations activate my-prod-config
