@@ -12,7 +12,24 @@ module "apis" {
   apis      = var.apis
 }
 
+
 module "networking" {
-  source     = "../../modules/networking"
-  project_id = var.project_id
+  source         = "../../modules/networking"
+  project_id     = var.project_id
+  env            = var.env
+  region         = var.region
+  ip_cidr_range  = var.cidr_range
 }
+
+
+
+# Additional EU-only dev network (europe-west2)
+# module "networking_eu" {
+#   source         = "../../modules/networking"
+#   project_id     = var.project_id
+#   env            = var.env
+#   region         = "europe-west2"
+#   ip_cidr_range  = var.eu_cidr_range
+# }
+
+

@@ -4,6 +4,7 @@ resource "google_project" "create_gcp_project" {
   billing_account     = var.billing_account_id # Billing id
   org_id              = var.org_id             # organization ID
   auto_create_network = false
+  deletion_policy     = "DELETE"  # Explicitly allow deletion
 }
 
 # module "apis" {

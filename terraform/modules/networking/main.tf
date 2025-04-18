@@ -1,30 +1,29 @@
-# Create privatenet network
-resource "google_compute_network" "privatenet" {
-  name                    = "privatenet"
+# Create VPC network
+resource "google_compute_network" "vpc_network" {
+  name                    = "vpc-int-${var.region}-${var.env}"
   project                 = var.project_id
   auto_create_subnetworks = false
+  description             = "Custom VPC for ${var.env} in ${var.region}"
 }
 
-# Create privatesubnet-us subnetwork
-resource "google_compute_subnetwork" "privatesubnet-us" {
-  name          = "privatesubnet-us"
-  region        = "us-south1"
-  network       = google_compute_network.privatenet.self_link
-  ip_cidr_range = "172.24.0.0/24"
-  project       = var.project_id  # Pass the project_id here
+# Create Subnet
+resource "google_compute_subnetwork" "subnet" {
+  name          = "subnet-int-${var.region}-${var.env}"
+  region        = var.region
+  network       = google_compute_network.vpc_network.id
+  ip_cidr_range = var.ip_cidr_range
+  project       = var.project_id
+  description    = "Subnet for ${var.env} in ${var.region}"
 }
-
 
 
 
 # Create a firewall rule to allow HTTP, SSH, RDP and ICMP traffic on privatenet
-resource "google_compute_firewall" "privatenet-allow-http-ssh-rdp-icmp" {
-  name    = "privatenet-allow-http-ssh-rdp-icmp"
-  source_ranges = [
-    "0.0.0.0/0"
-  ]
-  network = google_compute_network.privatenet.self_link
-  project       = var.project_id  # Pass the project_id here
+resource "google_compute_firewall" "allow-http-ssh-rdp-icmp" {
+  name          = "allow-http-ssh-rdp-icmp-${var.region}-${var.env}"
+  network       = google_compute_network.vpc_network.id
+  project       = var.project_id
+  source_ranges = ["0.0.0.0/0"]
 
   allow {
     protocol = "tcp"
@@ -34,6 +33,8 @@ resource "google_compute_firewall" "privatenet-allow-http-ssh-rdp-icmp" {
   allow {
     protocol = "icmp"
   }
+
+  description = "Allow essential traffic for ${var.env} in ${var.region}"
 }
 
 

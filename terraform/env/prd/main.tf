@@ -13,8 +13,9 @@ module "apis" {
 }
 
 module "networking" {
-  source     = "../../modules/networking"
-  project_id = var.project_id
-  depends_on = [module.apis]  # Add dependency here
+  source         = "../../modules/networking"
+  project_id     = var.project_id
+  env            = var.env
+  region         = var.region
+  ip_cidr_range  = var.cidr_range
 }
-

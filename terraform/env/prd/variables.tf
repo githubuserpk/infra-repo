@@ -10,6 +10,20 @@ variable "billing_account_id" {
   description = "The Billing account id"
 }
 
+variable "env" {
+  type        = string
+  description = "The env eg: prd"
+}
+
+variable "region" {
+  type        = string
+  description = "The region eg: us-central1"
+}
+
+variable "cidr_range" {
+  type        = string
+  description = "The cidr range for the network"
+}
 
 variable "org_id" {
   type        = string
